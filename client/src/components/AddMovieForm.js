@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 const initialFormValues = {
   title: "",
@@ -8,9 +8,15 @@ const initialFormValues = {
   description: "",
 };
 
-const [formValues, setFormValues] = useState(initialFormValues);
-
 const AddMovieForm = ({}) => {
+  const [formValues, setFormValues] = useState(initialFormValues);
+
+  const handleChange = (e) => {
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
+  };
   return (
     <div className="col">
       <div className="modal-content">
@@ -21,6 +27,7 @@ const AddMovieForm = ({}) => {
         </div>
         <div className="modal-body">
           <label htmlFor="title">
+            Title
             <input
               name="title"
               type="text"
